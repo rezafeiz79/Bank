@@ -1,2 +1,2 @@
-public class BranchManager {
+public class BranchManager extends Person {
 }
