@@ -4,14 +4,14 @@ import javax.persistence.*;
 public class Account {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Customer customer;
     private Integer accountNumber;
     @OneToOne(cascade = CascadeType.ALL)
     private CreditCard creditCard;
     private Long balance;
     private Boolean isAvailable;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Branch branch;
 
     public Account(Integer id, Customer customer, Integer accountNumber, CreditCard creditCard, Long balance, Boolean isAvailable, Branch branch) {
