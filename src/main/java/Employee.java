@@ -4,9 +4,9 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Employee extends Person {
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private BranchManager branchManager;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Branch branch;
 
     public Employee(Integer id, String name, String nationalCode, String userName, String password, BranchManager branchManager, Branch branch) {
