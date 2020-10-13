@@ -8,7 +8,7 @@ import java.util.Set;
 public class BranchManager extends Person {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Employee> employees;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Branch branch;
 
     public BranchManager(Integer id, String name, String nationalCode, String userName, String password, Set<Employee> employees, Branch branch) {
