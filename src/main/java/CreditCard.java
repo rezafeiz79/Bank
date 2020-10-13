@@ -9,7 +9,7 @@ public class CreditCard {
     private String expirationDate;
     private Integer firstPassword;
     private Integer secondPassword;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Account account;
 
     public CreditCard(Integer id, Integer cardNumber, Integer cvv2, String expirationDate, Integer firstPassword, Integer secondPassword, Account account) {
