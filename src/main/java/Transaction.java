@@ -4,9 +4,9 @@ import javax.persistence.*;
 public class Transaction {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToOne
+    @ManyToOne
     private CreditCard senderCard;
-    @OneToOne
+    @ManyToOne
     private CreditCard receiverCard;
     private Long amount;
     private String date;
@@ -18,6 +18,8 @@ public class Transaction {
         this.amount = amount;
         this.date = date;
     }
+
+    public Transaction() { }
 
     public Integer getId() {
         return id;

@@ -14,6 +14,8 @@ public class Employee extends Person {
         this.branch = branch;
     }
 
+    public Employee() { }
+
     public BranchManager getBranchManager() {
         return branchManager;
     }

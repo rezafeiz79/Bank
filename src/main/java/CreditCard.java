@@ -22,6 +22,8 @@ public class CreditCard {
         this.account = account;
     }
 
+    public CreditCard() { }
+
     public Integer getId() {
         return id;
     }

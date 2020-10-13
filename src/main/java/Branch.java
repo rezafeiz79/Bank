@@ -18,6 +18,8 @@ public class Branch {
         this.accounts = accounts;
     }
 
+    public Branch() { }
+
     public Integer getId() {
         return id;
     }

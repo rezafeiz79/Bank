@@ -24,6 +24,8 @@ public class Account {
         this.branch = branch;
     }
 
+    public Account() { }
+
     public Integer getId() {
         return id;
     }

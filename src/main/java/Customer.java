@@ -13,6 +13,8 @@ public class Customer extends Person {
         this.accounts = accounts;
     }
 
+    public Customer() { }
+
     public Set<Account> getAccounts() {
         return accounts;
     }
