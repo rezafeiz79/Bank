@@ -1,8 +1,10 @@
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
 public class View {
     private static Scanner scanner = new Scanner(System.in);
+    private static Random random = new Random();
 
     public static int showMainMenu() {
         int choice;
@@ -129,8 +131,74 @@ public class View {
         return choice;
     }
 
-    public static Branch showBranchCreationWizard() {
-        return null;
+    public static Branch showBranchCreationWizard(BranchManager branchManager, Set<Account> accounts) {
+        String name;
+        System.out.print("Enter Branch Name: ");
+        name = scanner.nextLine();
+        return new Branch(null, name, branchManager, accounts);
+    }
+
+    public static BranchManager showBranchManagerCreationWizard(Branch branch, Set<Employee> employees) {
+        String name;
+        String nationalCode;
+        String userName;
+        String password;
+        System.out.print("Enter Branch Name: ");
+        name = scanner.nextLine();
+        System.out.print("Enter Branch NationalCode: ");
+        nationalCode = scanner.nextLine();
+        System.out.print("Enter Branch UserName: ");
+        userName = scanner.nextLine();
+        System.out.print("Enter Branch Password: ");
+        password = scanner.nextLine();
+        return new BranchManager(null, name, nationalCode, userName, password, employees, branch);
+    }
+
+    public static Customer showCustomerCreationWizard(Set<Account> accounts) {
+        String name;
+        String nationalCode;
+        String userName;
+        String password;
+        System.out.print("Enter Branch Name: ");
+        name = scanner.nextLine();
+        System.out.print("Enter Branch NationalCode: ");
+        nationalCode = scanner.nextLine();
+        System.out.print("Enter Branch UserName: ");
+        userName = scanner.nextLine();
+        System.out.print("Enter Branch Password: ");
+        password = scanner.nextLine();
+        return new Customer(null, name, nationalCode, userName, password, accounts);
+    }
+
+    public static Employee showEmployeeCreationWizard(BranchManager branchManager, Branch branch) {
+        String name;
+        String nationalCode;
+        String userName;
+        String password;
+        System.out.print("Enter Branch Name: ");
+        name = scanner.nextLine();
+        System.out.print("Enter Branch NationalCode: ");
+        nationalCode = scanner.nextLine();
+        System.out.print("Enter Branch UserName: ");
+        userName = scanner.nextLine();
+        System.out.print("Enter Branch Password: ");
+        password = scanner.nextLine();
+        return new Employee(null, name, nationalCode, userName, password, branchManager, branch);
+    }
+
+    public static Account callAccountCreationWizard(Customer customer, CreditCard creditCard, Branch branch, Set<Account> accounts) {
+        int randomNumber = random.nextInt(100000) + 100000;
+        boolean isUnique = true;
+        for (Account account : accounts) {
+            if (randomNumber == account.getId()) {
+                isUnique = false;
+            }
+        }
+        if (isUnique) {
+            return new Account(null, customer, randomNumber, creditCard, 0, true, branch);
+        } else {
+            callAccountCreationWizard(customer, creditCard, branch, accounts);
+        }
     }
 
     public static <T> void showListOfEntities(Set<T> set) {
