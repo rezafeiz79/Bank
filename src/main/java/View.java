@@ -1,5 +1,6 @@
 import org.hibernate.Session;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
@@ -133,14 +134,14 @@ public class View {
         return choice;
     }
 
-    public static Branch showBranchCreationWizard(BranchManager branchManager, Set<Account> accounts) {
+    public static Branch showBranchCreationWizard() {
         String name;
         System.out.print("Enter Branch Name: ");
         name = scanner.nextLine();
-        return new Branch(null, name, branchManager, accounts);
+        return new Branch(null, name, null, null);
     }
 
-    public static BranchManager showBranchManagerCreationWizard(Branch branch, Set<Employee> employees) {
+    public static BranchManager showBranchManagerCreationWizard(Branch branch) {
         String name;
         String nationalCode;
         String userName;
@@ -153,10 +154,12 @@ public class View {
         userName = scanner.nextLine();
         System.out.print("Enter Branch Password: ");
         password = scanner.nextLine();
-        return new BranchManager(null, name, nationalCode, userName, password, employees, branch);
+        BranchManager branchManager = new BranchManager(null, name, nationalCode, userName, password, null, branch);
+        branch.setBranchManager(branchManager);
+        return branchManager;
     }
 
-    public static Customer showCustomerCreationWizard(Set<Account> accounts) {
+    public static Customer showCustomerCreationWizard() {
         String name;
         String nationalCode;
         String userName;
@@ -169,7 +172,7 @@ public class View {
         userName = scanner.nextLine();
         System.out.print("Enter Branch Password: ");
         password = scanner.nextLine();
-        return new Customer(null, name, nationalCode, userName, password, accounts);
+        return new Customer(null, name, nationalCode, userName, password, null);
     }
 
     public static Employee showEmployeeCreationWizard(BranchManager branchManager, Branch branch) {
@@ -197,7 +200,15 @@ public class View {
             }
         }
         if (isUnique) {
-            return new Account(null, customer, accountNumber, null, 0l, true, branch);
+            Account account = new Account(null, customer, accountNumber, null, 0l, true, branch);
+            if (customer.getAccounts() != null) {
+                customer.getAccounts().add(account);
+            } else {
+                Set<Account> madeAccounts = new HashSet<>();
+                madeAccounts.add(account);
+                customer.setAccounts(madeAccounts);
+            }
+            return account;
         } else {
             callAccountCreationWizard(customer, branch, accounts);
         }
