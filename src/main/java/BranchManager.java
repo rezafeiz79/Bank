@@ -17,6 +17,11 @@ public class BranchManager extends Person {
         this.branch = branch;
     }
 
+    public BranchManager(Integer id, String name, String nationalCode, String userName, String password, Branch branch) {
+        super(id, name, nationalCode, userName, password);
+        this.branch = branch;
+    }
+
     public BranchManager() { }
 
     public Set<Employee> getEmployees() {
@@ -25,5 +30,9 @@ public class BranchManager extends Person {
 
     public Branch getBranch() {
         return branch;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 }
