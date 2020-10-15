@@ -18,6 +18,11 @@ public class Branch {
         this.accounts = accounts;
     }
 
+    public Branch(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Branch() { }
 
     public Integer getId() {
@@ -34,5 +39,13 @@ public class Branch {
 
     public Set<Account> getAccounts() {
         return accounts;
+    }
+
+    public void setBranchManager(BranchManager branchManager) {
+        this.branchManager = branchManager;
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
     }
 }
