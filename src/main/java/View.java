@@ -189,15 +189,15 @@ public class View {
     }
 
     public static Account callAccountCreationWizard(Customer customer, Branch branch, Set<Account> accounts) {
-        int randomNumber = random.nextInt(100000) + 100000;
+        int accountNumber = random.nextInt(100000) + 100000;
         boolean isUnique = true;
         for (Account account : accounts) {
-            if (randomNumber == account.getId()) {
+            if (accountNumber == account.getAccountNumber()) {
                 isUnique = false;
             }
         }
         if (isUnique) {
-            return new Account(null, customer, randomNumber, null, 0l, true, branch);
+            return new Account(null, customer, accountNumber, null, 0l, true, branch);
         } else {
             callAccountCreationWizard(customer, branch, accounts);
         }
