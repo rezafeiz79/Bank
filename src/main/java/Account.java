@@ -24,6 +24,15 @@ public class Account {
         this.branch = branch;
     }
 
+    public Account(Integer id, Customer customer, Integer accountNumber, Long balance, Boolean isAvailable, Branch branch) {
+        this.id = id;
+        this.customer = customer;
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.isAvailable = isAvailable;
+        this.branch = branch;
+    }
+
     public Account() { }
 
     public Integer getId() {
@@ -52,5 +61,9 @@ public class Account {
 
     public Branch getBranch() {
         return branch;
+    }
+
+    public void setCreditCard(CreditCard creditCard) {
+        this.creditCard = creditCard;
     }
 }
