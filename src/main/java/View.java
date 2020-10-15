@@ -186,7 +186,7 @@ public class View {
         return new Employee(null, name, nationalCode, userName, password, branchManager, branch);
     }
 
-    public static Account callAccountCreationWizard(Customer customer, CreditCard creditCard, Branch branch, Set<Account> accounts) {
+    public static Account callAccountCreationWizard(Customer customer, Branch branch, Set<Account> accounts) {
         int randomNumber = random.nextInt(100000) + 100000;
         boolean isUnique = true;
         for (Account account : accounts) {
@@ -195,9 +195,9 @@ public class View {
             }
         }
         if (isUnique) {
-            return new Account(null, customer, randomNumber, creditCard, 0l, true, branch);
+            return new Account(null, customer, randomNumber, null, 0l, true, branch);
         } else {
-            callAccountCreationWizard(customer, creditCard, branch, accounts);
+            callAccountCreationWizard(customer, branch, accounts);
         }
         return null;
     }
