@@ -195,10 +195,36 @@ public class View {
             }
         }
         if (isUnique) {
-            return new Account(null, customer, randomNumber, creditCard, 0, true, branch);
+            return new Account(null, customer, randomNumber, creditCard, 0l, true, branch);
         } else {
             callAccountCreationWizard(customer, creditCard, branch, accounts);
         }
+        return null;
+    }
+
+    public static CreditCard showCreditCardCreationWizard(Account account, Set<CreditCard> creditCards) {
+        int firstPassword;
+        int secondPassword;
+        String expirationDate = null;
+        int cvv2 = random.nextInt(1000) + 1000;
+        int cardNumber = random.nextInt(100000) + 100000;
+        boolean isUnique = true;
+        for (CreditCard creditCard : creditCards) {
+            if (cvv2 == creditCard.getCvv2() || cardNumber == creditCard.getCardNumber()) {
+                isUnique = false;
+            }
+        }
+        if (isUnique) {
+            System.out.print("Enter First Password: ");
+            firstPassword = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter Second Password: ");
+            secondPassword = Integer.parseInt(scanner.nextLine());
+            return new CreditCard(null, cardNumber, cvv2, expirationDate, firstPassword, secondPassword, account);
+        } else {
+            System.out.println("Please Enter Info Again!");
+            showCreditCardCreationWizard(account, creditCards);
+        }
+        return null;
     }
 
     public static <T> void showListOfEntities(Set<T> set) {
