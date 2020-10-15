@@ -28,6 +28,10 @@ public class DatabaseUtil {
         return set;
     }
 
+    public static <T> T getEntityById(Session session, Class<T> type, int id) {
+        return (T)session.get(type, id);
+    }
+
     public static <T> void saveEntity(Session session, T object) {
         session.save(object);
     }
