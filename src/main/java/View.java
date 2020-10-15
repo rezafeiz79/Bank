@@ -1,3 +1,5 @@
+import org.hibernate.Session;
+
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
@@ -219,12 +221,63 @@ public class View {
             firstPassword = Integer.parseInt(scanner.nextLine());
             System.out.print("Enter Second Password: ");
             secondPassword = Integer.parseInt(scanner.nextLine());
-            return new CreditCard(null, cardNumber, cvv2, expirationDate, firstPassword, secondPassword, account);
+            CreditCard creditCard = new CreditCard(null, cardNumber, cvv2, expirationDate, firstPassword, secondPassword, account);
+            account.setCreditCard(creditCard);
+            return creditCard;
         } else {
             System.out.println("Please Enter Info Again!");
             showCreditCardCreationWizard(account, creditCards);
         }
         return null;
+    }
+
+    public static Branch showBranchSelectionMenu(Session session) {
+        int id;
+        System.out.print("Enter Branch ID: ");
+        id = Integer.parseInt(scanner.nextLine());
+        return DatabaseUtil.getEntityById(session, Branch.class, id);
+    }
+
+    public static BranchManager showBranchManagerSelectionMenu(Session session) {
+        int id;
+        System.out.print("Enter BranchManager ID: ");
+        id = Integer.parseInt(scanner.nextLine());
+        return DatabaseUtil.getEntityById(session, BranchManager.class, id);
+    }
+
+    public static Account showAccountSelectionMenu(Session session) {
+        int id;
+        System.out.print("Enter Account ID: ");
+        id = Integer.parseInt(scanner.nextLine());
+        return DatabaseUtil.getEntityById(session, Account.class, id);
+    }
+
+    public static CreditCard showCreditCardSelectionMenu(Session session) {
+        int id;
+        System.out.print("Enter CreditCard ID: ");
+        id = Integer.parseInt(scanner.nextLine());
+        return DatabaseUtil.getEntityById(session, CreditCard.class, id);
+    }
+
+    public static Customer showCustomerSelectionMenu(Session session) {
+        int id;
+        System.out.print("Enter Customer ID: ");
+        id = Integer.parseInt(scanner.nextLine());
+        return DatabaseUtil.getEntityById(session, Customer.class, id);
+    }
+
+    public static Employee showEmployeeSelectionMenu(Session session) {
+        int id;
+        System.out.print("Enter Employee ID: ");
+        id = Integer.parseInt(scanner.nextLine());
+        return DatabaseUtil.getEntityById(session, Employee.class, id);
+    }
+
+    public static Transaction showTransactionSelectionMenu(Session session) {
+        int id;
+        System.out.print("Enter Transaction ID: ");
+        id = Integer.parseInt(scanner.nextLine());
+        return DatabaseUtil.getEntityById(session, Transaction.class, id);
     }
 
     public static <T> void showListOfEntities(Set<T> set) {
