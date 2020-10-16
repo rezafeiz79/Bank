@@ -1,0 +1,10 @@
+package MenuOptions;
+
+public enum BranchManagerCRUDMenu {
+    CREATE_BRANCH_MANAGER,
+    GET_ALL_BRANCH_MANAGERS,
+    GET_BRANCH_MANAGERS,
+    UPDATE_BRANCH_MANAGER,
+    DELETE_BRANCH_MANAGER,
+    BACK
+}
