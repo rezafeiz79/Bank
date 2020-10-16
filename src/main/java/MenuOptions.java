@@ -44,4 +44,45 @@ public class MenuOptions {
         DELETE_BRANCH,
         BACK
     }
+
+    public enum CustomerCRUDMenu {
+        CREATE_CUSTOMER,
+        GET_ALL_CUSTOMERS,
+        GET_CUSTOMER,
+        UPDATE_CUSTOMER,
+        DELETE_CUSTOMER,
+        BACK
+    }
+
+    public enum AccountCRUDMenu {
+        CREATE_ACCOUNT,
+        GET_ALL_ACCOUNTS,
+        GET_ACCOUNT,
+        UPDATE_ACCOUNT,
+        DELETE_ACCOUNT,
+        BACK
+    }
+
+    public enum TransactionCRUDMenu {
+        CREATE_TRANSACTION,
+        GET_ALL_TRANSACTIONS,
+        GET_TRANSACTION,
+        UPDATE_TRANSACTION,
+        DELETE_TRANSACTION,
+        BACK
+    }
+
+    public enum CreditCardCRUDMenu {
+        CREATE_CREDIT_CARD,
+        GET_ALL_CREDIT_CARDS,
+        GET_CREDIT_CARD,
+        UPDATE_CREDIT_CARD,
+        DELETE_CREDIT_CARD,
+        BACK
+    }
+
+    public enum ReportsMenu {
+        GET_TOTAL_BALANCE,
+        BACK
+    }
 }
