@@ -6,9 +6,9 @@ public class Branch {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     private BranchManager branchManager;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     private Set<Account> accounts;
 
     public Branch(Integer id, String name, BranchManager branchManager, Set<Account> accounts) {
