@@ -9,14 +9,22 @@ public class View {
     private static Scanner scanner = new Scanner(System.in);
     private static Random random = new Random();
 
-    public static int showMainMenu() {
+    public static MenuOptions.MainMenu showMainMenu() {
         int choice;
         System.out.println("1. Sign In");
         System.out.println("2. Sign Up As Customer");
         System.out.println("3. Exit");
         System.out.print("Enter The Number Of Your Choice: ");
         choice = Integer.parseInt(scanner.nextLine());
-        return choice;
+        switch (choice) {
+            case 1:
+                return MenuOptions.MainMenu.SIGNIN;
+            case 2:
+                return MenuOptions.MainMenu.SIGNUP;
+            case 3:
+                return MenuOptions.MainMenu.EXIT;
+        }
+        return null;
     }
 
     public static int showMainManagerMenu() {
