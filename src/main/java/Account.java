@@ -7,7 +7,7 @@ public class Account {
     @OneToOne
     private Customer customer;
     private Integer accountNumber;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     private CreditCard creditCard;
     private Long balance;
     private Boolean isAvailable;
