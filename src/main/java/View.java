@@ -27,7 +27,7 @@ public class View {
         return null;
     }
 
-    public static int showMainManagerMenu() {
+    public static MenuOptions.MainMangerMenu showMainManagerMenu() {
         int choice;
         System.out.println("1. Branch CRUD");
         System.out.println("2. BranchManager CRUD");
@@ -40,7 +40,27 @@ public class View {
         System.out.println("9. Back To Main Menu");
         System.out.print("Enter The Number Of Your Choice: ");
         choice = Integer.parseInt(scanner.nextLine());
-        return choice;
+        switch (choice) {
+            case 1:
+                return MenuOptions.MainMangerMenu.BRANCH_CRUD;
+            case 2:
+                return MenuOptions.MainMangerMenu.BRANCH_MANAGER_CRUD;
+            case 3:
+                return MenuOptions.MainMangerMenu.EMPLOYEE_CRUD;
+            case 4:
+                return MenuOptions.MainMangerMenu.TRANSACTION_CRD;
+            case 5:
+                return MenuOptions.MainMangerMenu.ACCOUNT_CRUD;
+            case 6:
+                return MenuOptions.MainMangerMenu.CUSTOMER_CRUD;
+            case 7:
+                return MenuOptions.MainMangerMenu.CREDIT_CARD_CRUD;
+            case 8:
+                return MenuOptions.MainMangerMenu.REPORTS;
+            case 9:
+                return MenuOptions.MainMangerMenu.BACK;
+        }
+        return null;
     }
 
     public static int showBranchCRUDMenu() {
