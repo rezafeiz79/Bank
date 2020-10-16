@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 public class Customer extends Person {
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     private Set<Account> accounts;
 
     public Customer(Integer id, String name, String nationalCode, String userName, String password, Set<Account> accounts) {
