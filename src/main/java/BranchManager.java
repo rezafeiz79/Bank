@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 public class BranchManager extends Person {
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     private Set<Employee> employees;
     @OneToOne
     private Branch branch;
