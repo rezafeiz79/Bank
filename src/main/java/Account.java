@@ -66,4 +66,12 @@ public class Account {
     public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
     }
+
+    public void increaseBalance(long amount) {
+        this.balance += amount;
+    }
+
+    public void decreaseBalance(long amount) {
+        this.balance -= amount;
+    }
 }
