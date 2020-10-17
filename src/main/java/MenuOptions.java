@@ -67,7 +67,6 @@ public class MenuOptions {
         CREATE_TRANSACTION,
         GET_ALL_TRANSACTIONS,
         GET_TRANSACTION,
-        UPDATE_TRANSACTION,
         DELETE_TRANSACTION,
         BACK
     }
