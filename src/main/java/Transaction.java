@@ -17,6 +17,7 @@ public class Transaction {
         this.receiverCard = receiverCard;
         this.amount = amount;
         this.date = date;
+        doTransaction();
     }
 
     public Transaction() { }
@@ -39,5 +40,9 @@ public class Transaction {
 
     public String getDate() {
         return date;
+    }
+
+    private void doTransaction() {
+
     }
 }
