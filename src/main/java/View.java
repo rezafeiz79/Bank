@@ -63,7 +63,7 @@ public class View {
         return null;
     }
 
-    public static int showBranchCRUDMenu() {
+    public static MenuOptions.BranchCRUDMenu showBranchCRUDMenu() {
         int choice;
         System.out.println("1. Create Branch");
         System.out.println("2. Get List Of Branches");
@@ -73,10 +73,24 @@ public class View {
         System.out.println("6. Back To Previous Menu");
         System.out.print("Enter The Number Of Your Choice: ");
         choice = Integer.parseInt(scanner.nextLine());
-        return choice;
+        switch (choice) {
+            case 1:
+                return MenuOptions.BranchCRUDMenu.CREATE_BRANCH;
+            case 2:
+                return MenuOptions.BranchCRUDMenu.GET_ALL_BRANCHES;
+            case 3:
+                return MenuOptions.BranchCRUDMenu.GET_BRANCH;
+            case 4:
+                return MenuOptions.BranchCRUDMenu.UPDATE_BRANCH;
+            case 5:
+                return MenuOptions.BranchCRUDMenu.DELETE_BRANCH;
+            case 6:
+                return MenuOptions.BranchCRUDMenu.BACK;
+        }
+        return null;
     }
 
-    public static int showBranchManagerCRUDMenu() {
+    public static MenuOptions.BranchManagerCRUDMenu showBranchManagerCRUDMenu() {
         int choice;
         System.out.println("1. Create BranchManager");
         System.out.println("2. Get List Of BranchManagers");
@@ -86,10 +100,24 @@ public class View {
         System.out.println("6. Back To Previous Menu");
         System.out.print("Enter The Number Of Your Choice: ");
         choice = Integer.parseInt(scanner.nextLine());
-        return choice;
+        switch (choice) {
+            case 1:
+                return MenuOptions.BranchManagerCRUDMenu.CREATE_BRANCH_MANAGER;
+            case 2:
+                return MenuOptions.BranchManagerCRUDMenu.GET_ALL_BRANCH_MANAGERS;
+            case 3:
+                return MenuOptions.BranchManagerCRUDMenu.GET_BRANCH_MANAGER;
+            case 4:
+                return MenuOptions.BranchManagerCRUDMenu.UPDATE_BRANCH_MANAGER;
+            case 5:
+                return MenuOptions.BranchManagerCRUDMenu.DELETE_BRANCH_MANAGER;
+            case 6:
+                return MenuOptions.BranchManagerCRUDMenu.BACK;
+        }
+        return null;
     }
 
-    public static int showEmployeeCRUDMenu() {
+    public static MenuOptions.EmployeeCRUDMenu showEmployeeCRUDMenu() {
         int choice;
         System.out.println("1. Create Employee");
         System.out.println("2. Get List Of Employees");
@@ -99,10 +127,24 @@ public class View {
         System.out.println("6. Back To Previous Menu");
         System.out.print("Enter The Number Of Your Choice: ");
         choice = Integer.parseInt(scanner.nextLine());
-        return choice;
+        switch (choice) {
+            case 1:
+                return MenuOptions.EmployeeCRUDMenu.CREATE_EMPLOYEE;
+            case 2:
+                return MenuOptions.EmployeeCRUDMenu.GET_ALL_EMPLOYEES;
+            case 3:
+                return MenuOptions.EmployeeCRUDMenu.GET_EMPLOYEE;
+            case 4:
+                return MenuOptions.EmployeeCRUDMenu.UPDATE_EMPLOYEE;
+            case 5:
+                return MenuOptions.EmployeeCRUDMenu.DELETE_EMPLOYEE;
+            case 6:
+                return MenuOptions.EmployeeCRUDMenu.BACK;
+        }
+        return null;
     }
 
-    public static int showTransactionCRDMenu() {
+    public static MenuOptions.TransactionCRDMenu showTransactionCRDMenu() {
         int choice;
         System.out.println("1. Create Transaction");
         System.out.println("2. Get List Of Transactions");
@@ -111,7 +153,19 @@ public class View {
         System.out.println("5. Back To Previous Menu");
         System.out.print("Enter The Number Of Your Choice: ");
         choice = Integer.parseInt(scanner.nextLine());
-        return choice;
+        switch (choice) {
+            case 1:
+                return MenuOptions.TransactionCRDMenu.CREATE_TRANSACTION;
+            case 2:
+                return MenuOptions.TransactionCRDMenu.GET_ALL_TRANSACTIONS;
+            case 3:
+                return MenuOptions.TransactionCRDMenu.GET_TRANSACTION;
+            case 4:
+                return MenuOptions.TransactionCRDMenu.DELETE_TRANSACTION;
+            case 5:
+                return MenuOptions.TransactionCRDMenu.BACK;
+        }
+        return null;
     }
 
     public static int showAccountCRUDMenu() {
