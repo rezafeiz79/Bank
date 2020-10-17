@@ -421,6 +421,21 @@ public class View {
         return DatabaseUtil.getEntityById(session, Transaction.class, id);
     }
 
+    public static Person showSignInWizard(Set<Person> persons) {
+        String userName;
+        String password;
+        System.out.print("Enter UserName: ");
+        userName = scanner.nextLine();
+        System.out.print("Enter Password: ");
+        password = scanner.nextLine();
+        for (Person person : persons) {
+            if (person.getUserName().equals(userName) && person.getPassword().equals(password)) {
+                return person;
+            }
+        }
+        return null;
+    }
+
     public static <T> void showListOfEntities(Set<T> set) {
         for (T element : set) {
             System.out.println(element.toString());
