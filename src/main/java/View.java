@@ -168,7 +168,7 @@ public class View {
         return null;
     }
 
-    public static int showAccountCRUDMenu() {
+    public static MenuOptions.AccountCRUDMenu showAccountCRUDMenu() {
         int choice;
         System.out.println("1. Create Account");
         System.out.println("2. Get List Of Accounts");
@@ -178,10 +178,24 @@ public class View {
         System.out.println("6. Back To Previous Menu");
         System.out.print("Enter The Number Of Your Choice: ");
         choice = Integer.parseInt(scanner.nextLine());
-        return choice;
+        switch (choice) {
+            case 1:
+                return MenuOptions.AccountCRUDMenu.CREATE_ACCOUNT;
+            case 2:
+                return MenuOptions.AccountCRUDMenu.GET_ALL_ACCOUNTS;
+            case 3:
+                return MenuOptions.AccountCRUDMenu.GET_ACCOUNT;
+            case 4:
+                return MenuOptions.AccountCRUDMenu.UPDATE_ACCOUNT;
+            case 5:
+                return MenuOptions.AccountCRUDMenu.DELETE_ACCOUNT;
+            case 6:
+                return MenuOptions.AccountCRUDMenu.BACK;
+        }
+        return null;
     }
 
-    public static int showCustomerCRUDMenu() {
+    public static MenuOptions.CustomerCRUDMenu showCustomerCRUDMenu() {
         int choice;
         System.out.println("1. Create Customer");
         System.out.println("2. Get List Of Customers");
@@ -191,10 +205,24 @@ public class View {
         System.out.println("6. Back To Previous Menu");
         System.out.print("Enter The Number Of Your Choice: ");
         choice = Integer.parseInt(scanner.nextLine());
-        return choice;
+        switch (choice) {
+            case 1:
+                return MenuOptions.CustomerCRUDMenu.CREATE_CUSTOMER;
+            case 2:
+                return MenuOptions.CustomerCRUDMenu.GET_ALL_CUSTOMERS;
+            case 3:
+                return MenuOptions.CustomerCRUDMenu.GET_CUSTOMER;
+            case 4:
+                return MenuOptions.CustomerCRUDMenu.UPDATE_CUSTOMER;
+            case 5:
+                return MenuOptions.CustomerCRUDMenu.DELETE_CUSTOMER;
+            case 6:
+                return MenuOptions.CustomerCRUDMenu.BACK;
+        }
+        return null;
     }
 
-    public static int showCreditCardCRUDMenu() {
+    public static MenuOptions.CreditCardCRUDMenu showCreditCardCRUDMenu() {
         int choice;
         System.out.println("1. Create CreditCard");
         System.out.println("2. Get List Of CreditCards");
@@ -204,16 +232,36 @@ public class View {
         System.out.println("6. Back To Previous Menu");
         System.out.print("Enter The Number Of Your Choice: ");
         choice = Integer.parseInt(scanner.nextLine());
-        return choice;
+        switch (choice) {
+            case 1:
+                return MenuOptions.CreditCardCRUDMenu.CREATE_CREDIT_CARD;
+            case 2:
+                return MenuOptions.CreditCardCRUDMenu.GET_ALL_CREDIT_CARDS;
+            case 3:
+                return MenuOptions.CreditCardCRUDMenu.GET_CREDIT_CARD;
+            case 4:
+                return MenuOptions.CreditCardCRUDMenu.UPDATE_CREDIT_CARD;
+            case 5:
+                return MenuOptions.CreditCardCRUDMenu.DELETE_CREDIT_CARD;
+            case 6:
+                return MenuOptions.CreditCardCRUDMenu.BACK;
+        }
+        return null;
     }
 
-    public static int showReportsMenu() {
+    public static MenuOptions.ReportsMenu showReportsMenu() {
         int choice;
         System.out.println("1. Get Total Balance Of Bank");
         System.out.println("2. Back To Previous Menu");
         System.out.print("Enter The Number Of Your Choice: ");
         choice = Integer.parseInt(scanner.nextLine());
-        return choice;
+        switch (choice) {
+            case 1:
+                return MenuOptions.ReportsMenu.GET_TOTAL_BALANCE;
+            case 2:
+                return MenuOptions.ReportsMenu.BACK;
+        }
+        return null;
     }
 
     public static Branch showBranchCreationWizard() {
