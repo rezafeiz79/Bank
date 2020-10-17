@@ -276,13 +276,13 @@ public class View {
         String nationalCode;
         String userName;
         String password;
-        System.out.print("Enter Branch Name: ");
+        System.out.print("Enter BranchManager Name: ");
         name = scanner.nextLine();
-        System.out.print("Enter Branch NationalCode: ");
+        System.out.print("Enter BranchManager NationalCode: ");
         nationalCode = scanner.nextLine();
-        System.out.print("Enter Branch UserName: ");
+        System.out.print("Enter BranchManager UserName: ");
         userName = scanner.nextLine();
-        System.out.print("Enter Branch Password: ");
+        System.out.print("Enter BranchManager Password: ");
         password = scanner.nextLine();
         BranchManager branchManager = new BranchManager(null, name, nationalCode, userName, password, null, branch);
         branch.setBranchManager(branchManager);
@@ -294,13 +294,13 @@ public class View {
         String nationalCode;
         String userName;
         String password;
-        System.out.print("Enter Branch Name: ");
+        System.out.print("Enter Customer Name: ");
         name = scanner.nextLine();
-        System.out.print("Enter Branch NationalCode: ");
+        System.out.print("Enter Customer NationalCode: ");
         nationalCode = scanner.nextLine();
-        System.out.print("Enter Branch UserName: ");
+        System.out.print("Enter Customer UserName: ");
         userName = scanner.nextLine();
-        System.out.print("Enter Branch Password: ");
+        System.out.print("Enter Customer Password: ");
         password = scanner.nextLine();
         return new Customer(null, name, nationalCode, userName, password, null);
     }
@@ -310,13 +310,13 @@ public class View {
         String nationalCode;
         String userName;
         String password;
-        System.out.print("Enter Branch Name: ");
+        System.out.print("Enter Employee Name: ");
         name = scanner.nextLine();
-        System.out.print("Enter Branch NationalCode: ");
+        System.out.print("Enter Employee NationalCode: ");
         nationalCode = scanner.nextLine();
-        System.out.print("Enter Branch UserName: ");
+        System.out.print("Enter Employee UserName: ");
         userName = scanner.nextLine();
-        System.out.print("Enter Branch Password: ");
+        System.out.print("Enter Employee Password: ");
         password = scanner.nextLine();
         return new Employee(null, name, nationalCode, userName, password, branchManager, branch);
     }
