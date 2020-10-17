@@ -63,7 +63,7 @@ public class MenuOptions {
         BACK
     }
 
-    public enum TransactionCRUDMenu {
+    public enum TransactionCRDMenu {
         CREATE_TRANSACTION,
         GET_ALL_TRANSACTIONS,
         GET_TRANSACTION,
