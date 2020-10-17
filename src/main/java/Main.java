@@ -20,11 +20,38 @@ public class Main {
                     Person person = View.showSignInWizard(persons);
                     if (person != null) {
                         if (person instanceof MainManager) {
-                            View.showMainManagerMenu();
+                            MenuOptions.MainMangerMenu mainMangerMenuOption;
+                            mainMangerMenuOption = View.showMainManagerMenu();
+                            boolean mainManagerMenuFlag = true;
+                            while (mainManagerMenuFlag) {
+                                switch (mainMangerMenuOption) {
+                                    case BRANCH_CRUD:
+                                        break;
+                                    case BRANCH_MANAGER_CRUD:
+                                        break;
+                                    case EMPLOYEE_CRUD:
+                                        break;
+                                    case CUSTOMER_CRUD:
+                                        break;
+                                    case ACCOUNT_CRUD:
+                                        break;
+                                    case CREDIT_CARD_CRUD:
+                                        break;
+                                    case TRANSACTION_CRD:
+                                        break;
+                                    case REPORTS:
+                                        break;
+                                    case BACK:
+                                        mainManagerMenuFlag = false;
+                                        break;
+                                }
+                            }
                         }
                     }
                     break;
                 case SIGNUP:
+                    Customer customer = View.showCustomerCreationWizard();
+                    DatabaseUtil.saveEntity(session, customer);
                     break;
                 case EXIT:
                     mainFlag = false;
