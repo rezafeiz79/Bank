@@ -43,6 +43,7 @@ public class Transaction {
     }
 
     private void doTransaction() {
-
+        this.senderCard.getAccount().decreaseBalance(this.amount);
+        this.receiverCard.getAccount().increaseBalance(this.amount);
     }
 }
