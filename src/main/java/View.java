@@ -271,6 +271,14 @@ public class View {
         return new Branch(null, name, null, null);
     }
 
+    public static Branch showBranchUpdateWizard(Branch branch) {
+        String name;
+        System.out.print("Enter Branch Name: ");
+        name = scanner.nextLine();
+        branch.setName(name);
+        return branch;
+    }
+
     public static BranchManager showBranchManagerCreationWizard(Branch branch) {
         String name;
         String nationalCode;
