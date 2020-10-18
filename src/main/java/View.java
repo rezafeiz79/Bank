@@ -271,12 +271,11 @@ public class View {
         return new Branch(null, name, null, null);
     }
 
-    public static Branch showBranchUpdateWizard(Branch branch) {
+    public static void showBranchUpdateWizard(Branch branch) {
         String name;
         System.out.print("Enter Branch Name: ");
         name = scanner.nextLine();
         branch.setName(name);
-        return branch;
     }
 
     public static BranchManager showBranchManagerCreationWizard(Branch branch) {
@@ -384,7 +383,7 @@ public class View {
         int id;
         System.out.print("Enter Branch ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return session.get(Branch.class, id);
+        return (Branch) session.get(Branch.class, id);
     }
 
     public static BranchManager showBranchManagerSelectionMenu(Session session) {

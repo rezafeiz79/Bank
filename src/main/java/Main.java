@@ -1,4 +1,5 @@
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,26 +32,37 @@ public class Main {
                                         MenuOptions.BranchCRUDMenu branchCRUDMenuOption;
                                         branchCRUDMenuOption = View.showBranchCRUDMenu();
                                         Branch branch;
+                                        Transaction transaction;
                                         switch (branchCRUDMenuOption) {
                                             case CREATE_BRANCH:
                                                 branch = View.showBranchCreationWizard();
                                                 session.save(branch);
+                                                branch = null;
                                                 break;
                                             case GET_BRANCH:
                                                 branch = View.showBranchSelectionMenu(session);
                                                 View.showEntity(branch);
+                                                branch = null;
                                                 break;
                                             case GET_ALL_BRANCHES:
                                                 View.showListOfEntities(DatabaseUtil.getAllEntities(session, Branch.class));
                                                 break;
                                             case UPDATE_BRANCH:
+                                                transaction = session.beginTransaction();
                                                 branch = View.showBranchSelectionMenu(session);
-                                                branch = View.showBranchUpdateWizard(branch);
+                                                View.showBranchUpdateWizard(branch);
                                                 session.update(branch);
+                                                transaction.commit();
+                                                transaction = null;
+                                                branch = null;
                                                 break;
                                             case DELETE_BRANCH:
+                                                transaction = session.beginTransaction();
                                                 branch = View.showBranchSelectionMenu(session);
                                                 session.delete(branch);
+                                                transaction.commit();
+                                                transaction = null;
+                                                branch = null;
                                                 break;
                                             case BACK:
                                                 break;
