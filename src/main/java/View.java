@@ -452,7 +452,7 @@ public class View {
         senderCard = (CreditCard) session.get(CreditCard.class, Integer.parseInt(scanner.nextLine()));
         System.out.print("Enter Receiver Card ID: ");
         receiverCard = (CreditCard) session.get(CreditCard.class, Integer.parseInt(scanner.nextLine()));
-        System.out.print("Enter The Amount");
+        System.out.print("Enter The Amount: ");
         amount = Long.parseLong(scanner.nextLine());
         if (customer.getId() == senderCard.getAccount().getCustomer().getId()) {
             return new Transaction(null, senderCard, receiverCard, amount, java.time.LocalDate.now().toString());
