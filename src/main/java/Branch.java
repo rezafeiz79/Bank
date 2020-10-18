@@ -48,4 +48,8 @@ public class Branch {
     public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
