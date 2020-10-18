@@ -44,6 +44,8 @@ public class Main {
                                                 View.showListOfEntities(DatabaseUtil.getAllEntities(session, Branch.class));
                                                 break;
                                             case UPDATE_BRANCH:
+                                                branch = View.showBranchSelectionMenu(session);
+
                                                 break;
                                             case DELETE_BRANCH:
                                                 break;
@@ -75,7 +77,7 @@ public class Main {
                     break;
                 case SIGNUP:
                     Customer customer = View.showCustomerCreationWizard();
-                    DatabaseUtil.saveEntity(session, customer);
+                    session.save(customer);
                     break;
                 case EXIT:
                     mainFlag = false;
