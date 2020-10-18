@@ -331,6 +331,25 @@ public class View {
         return new Customer(null, name, nationalCode, userName, password, null);
     }
 
+    public static void showCustomerUpdateWizard(Customer customer) {
+        String name;
+        String nationalCode;
+        String userName;
+        String password;
+        System.out.print("Enter Customer Name: ");
+        name = scanner.nextLine();
+        System.out.print("Enter Customer NationalCode: ");
+        nationalCode = scanner.nextLine();
+        System.out.print("Enter Customer UserName: ");
+        userName = scanner.nextLine();
+        System.out.print("Enter Customer Password: ");
+        password = scanner.nextLine();
+        customer.setName(name);
+        customer.setNationalCode(nationalCode);
+        customer.setUserName(userName);
+        customer.setPassword(password);
+    }
+
     public static Employee showEmployeeCreationWizard(BranchManager branchManager, Branch branch) {
         String name;
         String nationalCode;
@@ -345,6 +364,25 @@ public class View {
         System.out.print("Enter Employee Password: ");
         password = scanner.nextLine();
         return new Employee(null, name, nationalCode, userName, password, branchManager, branch);
+    }
+
+    public static void showEmployeeUpdateWizard(Employee employee) {
+        String name;
+        String nationalCode;
+        String userName;
+        String password;
+        System.out.print("Enter Employee Name: ");
+        name = scanner.nextLine();
+        System.out.print("Enter Employee NationalCode: ");
+        nationalCode = scanner.nextLine();
+        System.out.print("Enter Employee UserName: ");
+        userName = scanner.nextLine();
+        System.out.print("Enter Employee Password: ");
+        password = scanner.nextLine();
+        employee.setName(name);
+        employee.setNationalCode(nationalCode);
+        employee.setUserName(userName);
+        employee.setPassword(password);
     }
 
     public static Account callAccountCreationWizard(Customer customer, Branch branch, Set<Account> accounts) {
@@ -374,28 +412,37 @@ public class View {
     public static CreditCard showCreditCardCreationWizard(Account account, Set<CreditCard> creditCards) {
         int firstPassword;
         int secondPassword;
-        String expirationDate = null;
-        int cvv2 = random.nextInt(1000) + 1000;
-        int cardNumber = random.nextInt(100000) + 100000;
-        boolean isUnique = true;
-        for (CreditCard creditCard : creditCards) {
-            if (cvv2 == creditCard.getCvv2() || cardNumber == creditCard.getCardNumber()) {
-                isUnique = false;
+        String expirationDate = java.time.LocalDate.now().toString();
+        boolean isUnique = false;
+        int cvv2 = 0;
+        int cardNumber = 0;
+        while (!isUnique) {
+            cvv2 = random.nextInt(1000) + 1000;
+            cardNumber = random.nextInt(100000) + 100000;
+            for (CreditCard creditCard : creditCards) {
+                if (!(cvv2 == creditCard.getCvv2() || cardNumber == creditCard.getCardNumber())) {
+                    isUnique = true;
+                }
             }
         }
-        if (isUnique) {
-            System.out.print("Enter First Password: ");
-            firstPassword = Integer.parseInt(scanner.nextLine());
-            System.out.print("Enter Second Password: ");
-            secondPassword = Integer.parseInt(scanner.nextLine());
-            CreditCard creditCard = new CreditCard(null, cardNumber, cvv2, expirationDate, firstPassword, secondPassword, account);
-            account.setCreditCard(creditCard);
-            return creditCard;
-        } else {
-            System.out.println("Please Enter Info Again!");
-            showCreditCardCreationWizard(account, creditCards);
-        }
-        return null;
+        System.out.print("Enter First Password: ");
+        firstPassword = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter Second Password: ");
+        secondPassword = Integer.parseInt(scanner.nextLine());
+        CreditCard creditCard = new CreditCard(null, cardNumber, cvv2, expirationDate, firstPassword, secondPassword, account);
+        account.setCreditCard(creditCard);
+        return creditCard;
+    }
+
+    public static void showCreditCardUpdateWizard(CreditCard creditCard) {
+        int firstPassword;
+        int secondPassword;
+        System.out.print("Enter First Password: ");
+        firstPassword = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter Second Password: ");
+        secondPassword = Integer.parseInt(scanner.nextLine());
+        creditCard.setFirstPassword(firstPassword);
+        creditCard.setSecondPassword(secondPassword);
     }
 
     public static Branch showBranchSelectionMenu(Session session) {
