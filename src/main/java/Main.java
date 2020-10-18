@@ -30,14 +30,18 @@ public class Main {
                                     case BRANCH_CRUD:
                                         MenuOptions.BranchCRUDMenu branchCRUDMenuOption;
                                         branchCRUDMenuOption = View.showBranchCRUDMenu();
+                                        Branch branch;
                                         switch (branchCRUDMenuOption) {
                                             case CREATE_BRANCH:
-                                                Branch branch = View.showBranchCreationWizard();
+                                                branch = View.showBranchCreationWizard();
                                                 session.save(branch);
                                                 break;
                                             case GET_BRANCH:
+                                                branch = View.showBranchSelectionMenu(session);
+                                                View.showEntity(branch);
                                                 break;
                                             case GET_ALL_BRANCHES:
+                                                View.showListOfEntities(DatabaseUtil.getAllEntities(session, Branch.class));
                                                 break;
                                             case UPDATE_BRANCH:
                                                 break;
