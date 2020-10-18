@@ -37,10 +37,6 @@ public class DatabaseUtil {
         return set;
     }
 
-    public static <T> T getEntityById(Session session, Class<T> type, int id) {
-        return (T)session.get(type, id);
-    }
-
     public static void shutdown() {
         getSessionFactory().close();
     }
