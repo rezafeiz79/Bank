@@ -26,6 +26,24 @@ public class Main {
                             while (mainManagerMenuFlag) {
                                 switch (mainMangerMenuOption) {
                                     case BRANCH_CRUD:
+                                        MenuOptions.BranchCRUDMenu branchCRUDMenuOption;
+                                        branchCRUDMenuOption = View.showBranchCRUDMenu();
+                                        switch (branchCRUDMenuOption) {
+                                            case CREATE_BRANCH:
+                                                Branch branch = View.showBranchCreationWizard();
+                                                DatabaseUtil.saveEntity(session, branch);
+                                                break;
+                                            case GET_BRANCH:
+                                                break;
+                                            case GET_ALL_BRANCHES:
+                                                break;
+                                            case UPDATE_BRANCH:
+                                                break;
+                                            case DELETE_BRANCH:
+                                                break;
+                                            case BACK:
+                                                break;
+                                        }
                                         break;
                                     case BRANCH_MANAGER_CRUD:
                                         break;
