@@ -6,6 +6,8 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) {
         Session session = DatabaseUtil.getSessionFactory().openSession();
+        MainManager mainManager = new MainManager(null, null, null, "admin", "admin");
+        DatabaseUtil.saveEntity(session, mainManager);
         MenuOptions.MainMenu mainMenuOption;
         boolean mainFlag = true;
         while(mainFlag) {

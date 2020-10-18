@@ -24,7 +24,7 @@ public class DatabaseUtil {
 
     public static <T> Set<T> getAllEntities(Session session, Class<T> type) {
         Set<T> set = new HashSet<T>();
-        set.addAll(session.createQuery("SELECT a FROM " + type.getSimpleName().toLowerCase() + " a", type).getResultList());
+        set.addAll(session.createQuery("SELECT * FROM " + type.getSimpleName().toLowerCase() + " *", type).getResultList());
         return set;
     }
 
