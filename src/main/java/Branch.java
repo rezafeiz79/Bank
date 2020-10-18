@@ -52,4 +52,11 @@ public class Branch {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String toString() {
+        String result = "";
+        result += "[Branch ID: " + this.getId() + ", ";
+        result += this.getName() + "]";
+        return result;
+    }
 }
