@@ -41,4 +41,20 @@ public abstract class Person {
     public String getPassword() {
         return password;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNationalCode(String nationalCode) {
+        this.nationalCode = nationalCode;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

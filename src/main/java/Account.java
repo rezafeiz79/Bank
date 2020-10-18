@@ -67,6 +67,18 @@ public class Account {
         this.creditCard = creditCard;
     }
 
+    public void setAccountNumber(Integer accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setBalance(Long balance) {
+        this.balance = balance;
+    }
+
+    public void setAvailable(Boolean available) {
+        isAvailable = available;
+    }
+
     public void increaseBalance(long amount) {
         this.balance += amount;
     }

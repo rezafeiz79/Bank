@@ -51,4 +51,24 @@ public class CreditCard {
     public Account getAccount() {
         return account;
     }
+
+    public void setCardNumber(Integer cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public void setCvv2(Integer cvv2) {
+        this.cvv2 = cvv2;
+    }
+
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public void setFirstPassword(Integer firstPassword) {
+        this.firstPassword = firstPassword;
+    }
+
+    public void setSecondPassword(Integer secondPassword) {
+        this.secondPassword = secondPassword;
+    }
 }
