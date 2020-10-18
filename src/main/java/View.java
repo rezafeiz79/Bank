@@ -296,6 +296,25 @@ public class View {
         return branchManager;
     }
 
+    public static void showBranchManagerUpdateWizard(BranchManager branchManager) {
+        String name;
+        String nationalCode;
+        String userName;
+        String password;
+        System.out.print("Enter BranchManager Name: ");
+        name = scanner.nextLine();
+        System.out.print("Enter BranchManager NationalCode: ");
+        nationalCode = scanner.nextLine();
+        System.out.print("Enter BranchManager UserName: ");
+        userName = scanner.nextLine();
+        System.out.print("Enter BranchManager Password: ");
+        password = scanner.nextLine();
+        branchManager.setName(name);
+        branchManager.setNationalCode(nationalCode);
+        branchManager.setUserName(userName);
+        branchManager.setPassword(password);
+    }
+
     public static Customer showCustomerCreationWizard() {
         String name;
         String nationalCode;
