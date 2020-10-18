@@ -7,6 +7,7 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) {
         Session session = DatabaseUtil.getSessionFactory().openSession();
+        Transaction transaction;
         //MainManager mainManager = new MainManager(null, null, null, "admin", "admin");
         //session.save(mainManager);
         MenuOptions.MainMenu mainMenuOption;
@@ -32,17 +33,16 @@ public class Main {
                                         MenuOptions.BranchCRUDMenu branchCRUDMenuOption;
                                         branchCRUDMenuOption = View.showBranchCRUDMenu();
                                         Branch branch;
-                                        Transaction transaction;
                                         switch (branchCRUDMenuOption) {
                                             case CREATE_BRANCH:
+                                                transaction = session.beginTransaction();
                                                 branch = View.showBranchCreationWizard();
                                                 session.save(branch);
-                                                branch = null;
+                                                transaction.commit();
                                                 break;
                                             case GET_BRANCH:
                                                 branch = View.showBranchSelectionMenu(session);
                                                 View.showEntity(branch);
-                                                branch = null;
                                                 break;
                                             case GET_ALL_BRANCHES:
                                                 View.showListOfEntities(DatabaseUtil.getAllEntities(session, Branch.class));
@@ -53,22 +53,34 @@ public class Main {
                                                 View.showBranchUpdateWizard(branch);
                                                 session.update(branch);
                                                 transaction.commit();
-                                                transaction = null;
-                                                branch = null;
                                                 break;
                                             case DELETE_BRANCH:
                                                 transaction = session.beginTransaction();
                                                 branch = View.showBranchSelectionMenu(session);
                                                 session.delete(branch);
                                                 transaction.commit();
-                                                transaction = null;
-                                                branch = null;
                                                 break;
                                             case BACK:
                                                 break;
                                         }
                                         break;
                                     case BRANCH_MANAGER_CRUD:
+                                        MenuOptions.BranchManagerCRUDMenu branchManagerCRUDMenuOption;
+                                        branchManagerCRUDMenuOption = View.showBranchManagerCRUDMenu();
+                                        switch (branchManagerCRUDMenuOption) {
+                                            case CREATE_BRANCH_MANAGER:
+                                                break;
+                                            case GET_BRANCH_MANAGER:
+                                                break;
+                                            case GET_ALL_BRANCH_MANAGERS:
+                                                break;
+                                            case UPDATE_BRANCH_MANAGER:
+                                                break;
+                                            case DELETE_BRANCH_MANAGER:
+                                                break;
+                                            case BACK:
+                                                break;
+                                        }
                                         break;
                                     case EMPLOYEE_CRUD:
                                         break;
