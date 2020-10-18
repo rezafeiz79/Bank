@@ -383,49 +383,49 @@ public class View {
         int id;
         System.out.print("Enter Branch ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return (Branch) session.get(Branch.class, id);
+        return (Branch)session.get(Branch.class, id);
     }
 
     public static BranchManager showBranchManagerSelectionMenu(Session session) {
         int id;
         System.out.print("Enter BranchManager ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return session.get(BranchManager.class, id);
+        return (BranchManager)session.get(BranchManager.class, id);
     }
 
     public static Account showAccountSelectionMenu(Session session) {
         int id;
         System.out.print("Enter Account ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return session.get(Account.class, id);
+        return (Account)session.get(Account.class, id);
     }
 
     public static CreditCard showCreditCardSelectionMenu(Session session) {
         int id;
         System.out.print("Enter CreditCard ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return session.get(CreditCard.class, id);
+        return (CreditCard)session.get(CreditCard.class, id);
     }
 
     public static Customer showCustomerSelectionMenu(Session session) {
         int id;
         System.out.print("Enter Customer ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return session.get(Customer.class, id);
+        return (Customer)session.get(Customer.class, id);
     }
 
     public static Employee showEmployeeSelectionMenu(Session session) {
         int id;
         System.out.print("Enter Employee ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return session.get(Employee.class, id);
+        return (Employee)session.get(Employee.class, id);
     }
 
     public static Transaction showTransactionSelectionMenu(Session session) {
         int id;
         System.out.print("Enter Transaction ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return session.get(Transaction.class, id);
+        return (Transaction)session.get(Transaction.class, id);
     }
 
     public static Person showSignInWizard(Set<Person> persons) {
