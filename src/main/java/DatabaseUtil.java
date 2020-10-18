@@ -41,18 +41,6 @@ public class DatabaseUtil {
         return (T)session.get(type, id);
     }
 
-    public static <T> void saveEntity(Session session, T object) {
-        session.save(object);
-    }
-
-    public static <T> void deleteEntity(Session session, T object) {
-        session.delete(object);
-    }
-
-    public static <T> void updateEntity(Session session, T object) {
-        session.update(object);
-    }
-
     public static void shutdown() {
         getSessionFactory().close();
     }
