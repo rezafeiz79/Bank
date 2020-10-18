@@ -45,9 +45,12 @@ public class Main {
                                                 break;
                                             case UPDATE_BRANCH:
                                                 branch = View.showBranchSelectionMenu(session);
-
+                                                branch = View.showBranchUpdateWizard(branch);
+                                                session.update(branch);
                                                 break;
                                             case DELETE_BRANCH:
+                                                branch = View.showBranchSelectionMenu(session);
+                                                session.delete(branch);
                                                 break;
                                             case BACK:
                                                 break;
