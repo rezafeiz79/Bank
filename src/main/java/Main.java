@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Session session = DatabaseUtil.getSessionFactory().openSession();
         MainManager mainManager = new MainManager(null, null, null, "admin", "admin");
-        DatabaseUtil.saveEntity(session, mainManager);
+        session.save(mainManager);
         MenuOptions.MainMenu mainMenuOption;
         boolean mainFlag = true;
         while(mainFlag) {
@@ -23,9 +23,9 @@ public class Main {
                     if (person != null) {
                         if (person instanceof MainManager) {
                             MenuOptions.MainMangerMenu mainMangerMenuOption;
-                            mainMangerMenuOption = View.showMainManagerMenu();
                             boolean mainManagerMenuFlag = true;
                             while (mainManagerMenuFlag) {
+                                mainMangerMenuOption = View.showMainManagerMenu();
                                 switch (mainMangerMenuOption) {
                                     case BRANCH_CRUD:
                                         MenuOptions.BranchCRUDMenu branchCRUDMenuOption;
@@ -33,7 +33,7 @@ public class Main {
                                         switch (branchCRUDMenuOption) {
                                             case CREATE_BRANCH:
                                                 Branch branch = View.showBranchCreationWizard();
-                                                DatabaseUtil.saveEntity(session, branch);
+                                                session.save(branch);
                                                 break;
                                             case GET_BRANCH:
                                                 break;
