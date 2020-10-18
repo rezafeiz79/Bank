@@ -86,4 +86,13 @@ public class Account {
     public void decreaseBalance(long amount) {
         this.balance -= amount;
     }
+
+    public String toString() {
+        String result = "";
+        result += "[Account ID: " + this.getId() + ", ";
+        result += "Account Number: " + this.getAccountNumber() + ", ";
+        result += "Account Balance: " + this.getBalance() + ", ";
+        result += "Account Availability: " + this.getAvailable() + "]";
+        return result;
+    }
 }

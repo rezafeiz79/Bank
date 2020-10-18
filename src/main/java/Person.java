@@ -57,4 +57,13 @@ public abstract class Person {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String toString() {
+        String result = "";
+        result += "[Person ID: " + this.getId() + ", ";
+        result += "Person Name: " + this.getName() + ", ";
+        result += "Person NationalCode: " + this.getNationalCode() + ", ";
+        result += "Person UserName: " + this.getUserName() + "]";
+        return result;
+    }
 }

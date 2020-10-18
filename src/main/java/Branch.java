@@ -56,7 +56,7 @@ public class Branch {
     public String toString() {
         String result = "";
         result += "[Branch ID: " + this.getId() + ", ";
-        result += this.getName() + "]";
+        result += "Branch Name: " + this.getName() + "]";
         return result;
     }
 }

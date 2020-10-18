@@ -71,4 +71,13 @@ public class CreditCard {
     public void setSecondPassword(Integer secondPassword) {
         this.secondPassword = secondPassword;
     }
+
+    public String toString() {
+        String result = "";
+        result += "[CreditCard ID: " + this.getId() + ", ";
+        result += "CreditCard Number: " + this.getCardNumber() + ", ";
+        result += "CreditCard CVV2: " + this.getCvv2() + ", ";
+        result += "CreditCard Expiration Date: " + this.getExpirationDate() + "]";
+        return result;
+    }
 }

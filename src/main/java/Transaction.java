@@ -46,4 +46,14 @@ public class Transaction {
         this.senderCard.getAccount().decreaseBalance(this.amount);
         this.receiverCard.getAccount().increaseBalance(this.amount);
     }
+
+    public String toString() {
+        String result = "";
+        result += "[Transaction ID: " + this.getId() + ", ";
+        result += "Transaction Sender Card Number: " + this.getSenderCard().getCardNumber() + ", ";
+        result += "Transaction Receiver Card Number: " + this.getReceiverCard().getCardNumber() + ", ";
+        result += "Transaction Amount: " + this.getAmount() + ", ";
+        result += "Transaction Date: " + this.getDate() + ", ";
+        return result;
+    }
 }
