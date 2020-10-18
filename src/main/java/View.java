@@ -384,49 +384,49 @@ public class View {
         int id;
         System.out.print("Enter Branch ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return DatabaseUtil.getEntityById(session, Branch.class, id);
+        return session.get(Branch.class, id);
     }
 
     public static BranchManager showBranchManagerSelectionMenu(Session session) {
         int id;
         System.out.print("Enter BranchManager ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return DatabaseUtil.getEntityById(session, BranchManager.class, id);
+        return session.get(BranchManager.class, id);
     }
 
     public static Account showAccountSelectionMenu(Session session) {
         int id;
         System.out.print("Enter Account ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return DatabaseUtil.getEntityById(session, Account.class, id);
+        return session.get(Account.class, id);
     }
 
     public static CreditCard showCreditCardSelectionMenu(Session session) {
         int id;
         System.out.print("Enter CreditCard ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return DatabaseUtil.getEntityById(session, CreditCard.class, id);
+        return session.get(CreditCard.class, id);
     }
 
     public static Customer showCustomerSelectionMenu(Session session) {
         int id;
         System.out.print("Enter Customer ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return DatabaseUtil.getEntityById(session, Customer.class, id);
+        return session.get(Customer.class, id);
     }
 
     public static Employee showEmployeeSelectionMenu(Session session) {
         int id;
         System.out.print("Enter Employee ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return DatabaseUtil.getEntityById(session, Employee.class, id);
+        return session.get(Employee.class, id);
     }
 
     public static Transaction showTransactionSelectionMenu(Session session) {
         int id;
         System.out.print("Enter Transaction ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return DatabaseUtil.getEntityById(session, Transaction.class, id);
+        return session.get(Transaction.class, id);
     }
 
     public static Person showSignInWizard(Set<Person> persons) {
