@@ -2,6 +2,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +28,12 @@ public class DatabaseUtil {
 
     public static <T> Set<T> getAllEntities(Session session, Class<T> type) {
         Set<T> set = new HashSet<T>();
-        set.addAll(session.createQuery("SELECT * FROM " + type.getSimpleName().toLowerCase() + " *", type).getResultList());
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<T> cq = cb.createQuery(type);
+        Root<T> rootEntry = cq.from(type);
+        CriteriaQuery<T> all = cq.select(rootEntry);
+        TypedQuery<T> allQuery = session.createQuery(all);
+        set.addAll(allQuery.getResultList());
         return set;
     }
 
