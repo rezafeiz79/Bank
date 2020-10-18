@@ -412,7 +412,6 @@ public class View {
     public static CreditCard showCreditCardCreationWizard(Account account, Set<CreditCard> creditCards) {
         int firstPassword;
         int secondPassword;
-        String expirationDate = java.time.LocalDate.now().toString();
         boolean isUnique = false;
         int cvv2 = 0;
         int cardNumber = 0;
@@ -429,7 +428,7 @@ public class View {
         firstPassword = Integer.parseInt(scanner.nextLine());
         System.out.print("Enter Second Password: ");
         secondPassword = Integer.parseInt(scanner.nextLine());
-        CreditCard creditCard = new CreditCard(null, cardNumber, cvv2, expirationDate, firstPassword, secondPassword, account);
+        CreditCard creditCard = new CreditCard(null, cardNumber, cvv2, java.time.LocalDate.now().toString(), firstPassword, secondPassword, account);
         account.setCreditCard(creditCard);
         return creditCard;
     }
@@ -443,6 +442,22 @@ public class View {
         secondPassword = Integer.parseInt(scanner.nextLine());
         creditCard.setFirstPassword(firstPassword);
         creditCard.setSecondPassword(secondPassword);
+    }
+
+    public static Transaction showTransactionCreationWizard(Customer customer, Session session) {
+        CreditCard senderCard;
+        CreditCard receiverCard;
+        long amount;
+        System.out.print("Enter Sender Card ID: ");
+        senderCard = (CreditCard) session.get(CreditCard.class, Integer.parseInt(scanner.nextLine()));
+        System.out.print("Enter Receiver Card ID: ");
+        receiverCard = (CreditCard) session.get(CreditCard.class, Integer.parseInt(scanner.nextLine()));
+        System.out.print("Enter The Amount");
+        amount = Long.parseLong(scanner.nextLine());
+        if (customer.getId() == senderCard.getAccount().getCustomer().getId()) {
+            return new Transaction(null, senderCard, receiverCard, amount, java.time.LocalDate.now().toString());
+        }
+        return null;
     }
 
     public static Branch showBranchSelectionMenu(Session session) {
