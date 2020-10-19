@@ -11,6 +11,8 @@ public class Main {
         //MainManager mainManager = new MainManager(null, null, null, "admin", "admin");
         //session.save(mainManager);
         MenuOptions.MainMenu mainMenuOption;
+        Branch branch;
+        BranchManager branchManager;
         boolean mainFlag = true;
         while(mainFlag) {
             mainMenuOption = View.showMainMenu();
@@ -32,7 +34,6 @@ public class Main {
                                     case BRANCH_CRUD:
                                         MenuOptions.BranchCRUDMenu branchCRUDMenuOption;
                                         branchCRUDMenuOption = View.showBranchCRUDMenu();
-                                        Branch branch;
                                         switch (branchCRUDMenuOption) {
                                             case CREATE_BRANCH:
                                                 transaction = session.beginTransaction();
@@ -69,12 +70,26 @@ public class Main {
                                         branchManagerCRUDMenuOption = View.showBranchManagerCRUDMenu();
                                         switch (branchManagerCRUDMenuOption) {
                                             case CREATE_BRANCH_MANAGER:
+                                                transaction = session.beginTransaction();
+                                                branch = View.showBranchSelectionMenu(session);
+                                                branchManager = View.showBranchManagerCreationWizard(branch);
+                                                session.save(branchManager);
+                                                session.update(branch);
+                                                transaction.commit();
                                                 break;
                                             case GET_BRANCH_MANAGER:
+                                                branchManager = View.showBranchManagerSelectionMenu(session);
+                                                View.showEntity(branchManager);
                                                 break;
                                             case GET_ALL_BRANCH_MANAGERS:
+                                                View.showListOfEntities(DatabaseUtil.getAllEntities(session, BranchManager.class));
                                                 break;
                                             case UPDATE_BRANCH_MANAGER:
+                                                transaction = session.beginTransaction();
+                                                branchManager = View.showBranchManagerSelectionMenu(session);
+                                                View.showBranchManagerUpdateWizard(branchManager);
+                                                session.update(branchManager);
+                                                transaction.commit();
                                                 break;
                                             case DELETE_BRANCH_MANAGER:
                                                 break;
