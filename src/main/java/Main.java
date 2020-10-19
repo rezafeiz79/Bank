@@ -13,6 +13,8 @@ public class Main {
         MenuOptions.MainMenu mainMenuOption;
         Branch branch;
         BranchManager branchManager;
+        Employee employee;
+        Customer customer;
         boolean mainFlag = true;
         while(mainFlag) {
             mainMenuOption = View.showMainMenu();
@@ -92,22 +94,132 @@ public class Main {
                                                 transaction.commit();
                                                 break;
                                             case DELETE_BRANCH_MANAGER:
+                                                transaction = session.beginTransaction();
+                                                branchManager = View.showBranchManagerSelectionMenu(session);
+                                                session.delete(branchManager);
+                                                transaction.commit();
                                                 break;
                                             case BACK:
                                                 break;
                                         }
                                         break;
                                     case EMPLOYEE_CRUD:
+                                        MenuOptions.EmployeeCRUDMenu employeeCRUDMenuOption;
+                                        employeeCRUDMenuOption = View.showEmployeeCRUDMenu();
+                                        switch (employeeCRUDMenuOption) {
+                                            case CREATE_EMPLOYEE:
+                                                transaction = session.beginTransaction();
+                                                branch = View.showBranchSelectionMenu(session);
+                                                branchManager = View.showBranchManagerSelectionMenu(session);
+                                                employee = View.showEmployeeCreationWizard(branchManager, branch);
+                                                session.save(employee);
+                                                session.update(branch);
+                                                session.update(branchManager);
+                                                transaction.commit();
+                                                break;
+                                            case GET_EMPLOYEE:
+                                                employee = View.showEmployeeSelectionMenu(session);
+                                                View.showEntity(employee);
+                                                break;
+                                            case GET_ALL_EMPLOYEES:
+                                                View.showListOfEntities(DatabaseUtil.getAllEntities(session, Employee.class));
+                                                break;
+                                            case UPDATE_EMPLOYEE:
+                                                transaction = session.beginTransaction();
+                                                employee = View.showEmployeeSelectionMenu(session);
+                                                View.showEmployeeUpdateWizard(employee);
+                                                session.update(employee);
+                                                transaction.commit();
+                                                break;
+                                            case DELETE_EMPLOYEE:
+                                                transaction = session.beginTransaction();
+                                                employee = View.showEmployeeSelectionMenu(session);
+                                                session.delete(employee);
+                                                transaction.commit();
+                                                break;
+                                            case BACK:
+                                                break;
+                                        }
                                         break;
                                     case CUSTOMER_CRUD:
+                                        MenuOptions.CustomerCRUDMenu customerCRUDMenuOption;
+                                        customerCRUDMenuOption = View.showCustomerCRUDMenu();
+                                        switch (customerCRUDMenuOption) {
+                                            case CREATE_CUSTOMER:
+                                                break;
+                                            case GET_CUSTOMER:
+                                                break;
+                                            case GET_ALL_CUSTOMERS:
+                                                break;
+                                            case UPDATE_CUSTOMER:
+                                                break;
+                                            case DELETE_CUSTOMER:
+                                                break;
+                                            case BACK:
+                                                break;
+                                        }
                                         break;
                                     case ACCOUNT_CRUD:
+                                        MenuOptions.AccountCRUDMenu accountCRUDMenuOption;
+                                        accountCRUDMenuOption = View.showAccountCRUDMenu();
+                                        switch (accountCRUDMenuOption) {
+                                            case CREATE_ACCOUNT:
+                                                break;
+                                            case GET_ACCOUNT:
+                                                break;
+                                            case GET_ALL_ACCOUNTS:
+                                                break;
+                                            case UPDATE_ACCOUNT:
+                                                break;
+                                            case DELETE_ACCOUNT:
+                                                break;
+                                            case BACK:
+                                                break;
+                                        }
                                         break;
                                     case CREDIT_CARD_CRUD:
+                                        MenuOptions.CreditCardCRUDMenu creditCardCRUDMenuOption;
+                                        creditCardCRUDMenuOption = View.showCreditCardCRUDMenu();
+                                        switch (creditCardCRUDMenuOption) {
+                                            case CREATE_CREDIT_CARD:
+                                                break;
+                                            case GET_CREDIT_CARD:
+                                                break;
+                                            case GET_ALL_CREDIT_CARDS:
+                                                break;
+                                            case UPDATE_CREDIT_CARD:
+                                                break;
+                                            case DELETE_CREDIT_CARD:
+                                                break;
+                                            case BACK:
+                                                break;
+                                        }
                                         break;
                                     case TRANSACTION_CRD:
+                                        MenuOptions.TransactionCRDMenu transactionCRDMenuOption;
+                                        transactionCRDMenuOption = View.showTransactionCRDMenu();
+                                        switch (transactionCRDMenuOption) {
+                                            case CREATE_TRANSACTION:
+                                                break;
+                                            case GET_TRANSACTION:
+                                                break;
+                                            case GET_ALL_TRANSACTIONS:
+                                                break;
+                                            case DELETE_TRANSACTION:
+                                                break;
+                                            case BACK:
+                                                break;
+                                        }
                                         break;
                                     case REPORTS:
+                                        MenuOptions.ReportsMenu reportsMenuOption;
+                                        reportsMenuOption = View.showReportsMenu();
+                                        switch (reportsMenuOption) {
+                                            case GET_TOTAL_BALANCE:
+                                                break;
+                                            case BACK:
+                                                break;
+                                        }
                                         break;
                                     case BACK:
                                         mainManagerMenuFlag = false;
@@ -118,8 +230,10 @@ public class Main {
                     }
                     break;
                 case SIGNUP:
-                    Customer customer = View.showCustomerCreationWizard();
-                    session.save(customer);
+                    Customer signedUpCustomer = View.showCustomerCreationWizard();
+                    transaction = session.beginTransaction();
+                    session.save(signedUpCustomer);
+                    transaction.commit();
                     break;
                 case EXIT:
                     mainFlag = false;
