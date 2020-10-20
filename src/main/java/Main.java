@@ -8,13 +8,16 @@ public class Main {
     public static void main(String[] args) {
         Session session = DatabaseUtil.getSessionFactory().openSession();
         Transaction transaction;
-        //MainManager mainManager = new MainManager(null, null, null, "admin", "admin");
-        //session.save(mainManager);
+        MainManager mainManager = new MainManager(null, null, null, "admin", "admin");
+        session.save(mainManager);
         MenuOptions.MainMenu mainMenuOption;
         Branch branch;
         BranchManager branchManager;
         Employee employee;
         Customer customer;
+        Account account;
+        CreditCard creditCard;
+        MoneyTransaction MoneyTransaction;
         boolean mainFlag = true;
         while(mainFlag) {
             mainMenuOption = View.showMainMenu();
@@ -146,14 +149,30 @@ public class Main {
                                         customerCRUDMenuOption = View.showCustomerCRUDMenu();
                                         switch (customerCRUDMenuOption) {
                                             case CREATE_CUSTOMER:
+                                                transaction = session.beginTransaction();
+                                                customer = View.showCustomerCreationWizard();
+                                                session.save(customer);
+                                                transaction.commit();
                                                 break;
                                             case GET_CUSTOMER:
+                                                customer = View.showCustomerSelectionMenu(session);
+                                                View.showEntity(customer);
                                                 break;
                                             case GET_ALL_CUSTOMERS:
+                                                View.showListOfEntities(DatabaseUtil.getAllEntities(session, Customer.class));
                                                 break;
                                             case UPDATE_CUSTOMER:
+                                                transaction = session.beginTransaction();
+                                                customer = View.showCustomerSelectionMenu(session);
+                                                View.showCustomerUpdateWizard(customer);
+                                                session.update(customer);
+                                                transaction.commit();
                                                 break;
                                             case DELETE_CUSTOMER:
+                                                transaction = session.beginTransaction();
+                                                customer = View.showCustomerSelectionMenu(session);
+                                                session.delete(customer);
+                                                transaction.commit();
                                                 break;
                                             case BACK:
                                                 break;
@@ -164,14 +183,29 @@ public class Main {
                                         accountCRUDMenuOption = View.showAccountCRUDMenu();
                                         switch (accountCRUDMenuOption) {
                                             case CREATE_ACCOUNT:
+                                                transaction = session.beginTransaction();
+                                                customer = View.showCustomerSelectionMenu(session);
+                                                branch = View.showBranchSelectionMenu(session);
+                                                account = View.callAccountCreationWizard(customer, branch, DatabaseUtil.getAllEntities(session, Account.class));
+                                                session.save(account);
+                                                session.update(customer);
+                                                session.update(branch);
+                                                transaction.commit();
                                                 break;
                                             case GET_ACCOUNT:
+                                                account = View.showAccountSelectionMenu(session);
+                                                View.showEntity(account);
                                                 break;
                                             case GET_ALL_ACCOUNTS:
+                                                View.showListOfEntities(DatabaseUtil.getAllEntities(session, Account.class));
                                                 break;
                                             case UPDATE_ACCOUNT:
                                                 break;
                                             case DELETE_ACCOUNT:
+                                                transaction = session.beginTransaction();
+                                                account = View.showAccountSelectionMenu(session);
+                                                session.delete(account);
+                                                transaction.commit();
                                                 break;
                                             case BACK:
                                                 break;
@@ -182,14 +216,32 @@ public class Main {
                                         creditCardCRUDMenuOption = View.showCreditCardCRUDMenu();
                                         switch (creditCardCRUDMenuOption) {
                                             case CREATE_CREDIT_CARD:
+                                                transaction = session.beginTransaction();
+                                                account = View.showAccountSelectionMenu(session);
+                                                creditCard = View.showCreditCardCreationWizard(account, DatabaseUtil.getAllEntities(session, CreditCard.class));
+                                                session.save(creditCard);
+                                                session.update(account);
+                                                transaction.commit();
                                                 break;
                                             case GET_CREDIT_CARD:
+                                                creditCard = View.showCreditCardSelectionMenu(session);
+                                                View.showEntity(creditCard);
                                                 break;
                                             case GET_ALL_CREDIT_CARDS:
+                                                View.showListOfEntities(DatabaseUtil.getAllEntities(session, CreditCard.class));
                                                 break;
                                             case UPDATE_CREDIT_CARD:
+                                                transaction = session.beginTransaction();
+                                                creditCard = View.showCreditCardSelectionMenu(session);
+                                                View.showCreditCardUpdateWizard(creditCard);
+                                                session.update(creditCard);
+                                                transaction.commit();
                                                 break;
                                             case DELETE_CREDIT_CARD:
+                                                transaction = session.beginTransaction();
+                                                creditCard = View.showCreditCardSelectionMenu(session);
+                                                session.delete(creditCard);
+                                                transaction.commit();
                                                 break;
                                             case BACK:
                                                 break;
@@ -200,10 +252,17 @@ public class Main {
                                         transactionCRDMenuOption = View.showTransactionCRDMenu();
                                         switch (transactionCRDMenuOption) {
                                             case CREATE_TRANSACTION:
+                                                transaction = session.beginTransaction();
+                                                customer = View.showCustomerSelectionMenu(session);
+                                                MoneyTransaction = View.showTransactionCreationWizard(customer, session);
+                                                transaction.commit();
                                                 break;
                                             case GET_TRANSACTION:
+                                                MoneyTransaction = View.showTransactionSelectionMenu(session);
+                                                View.showEntity(MoneyTransaction);
                                                 break;
                                             case GET_ALL_TRANSACTIONS:
+                                                View.showListOfEntities(DatabaseUtil.getAllEntities(session, MoneyTransaction.class));
                                                 break;
                                             case DELETE_TRANSACTION:
                                                 break;

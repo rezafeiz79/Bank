@@ -1,7 +1,7 @@
 import javax.persistence.*;
 
 @Entity
-public class Transaction {
+public class MoneyTransaction {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
@@ -11,7 +11,7 @@ public class Transaction {
     private Long amount;
     private String date;
 
-    public Transaction(Integer id, CreditCard senderCard, CreditCard receiverCard, Long amount, String date) {
+    public MoneyTransaction(Integer id, CreditCard senderCard, CreditCard receiverCard, Long amount, String date) {
         this.id = id;
         this.senderCard = senderCard;
         this.receiverCard = receiverCard;
@@ -20,7 +20,7 @@ public class Transaction {
         doTransaction();
     }
 
-    public Transaction() { }
+    public MoneyTransaction() { }
 
     public Integer getId() {
         return id;

@@ -9,7 +9,7 @@
         <property name = "hibernate.connection.url">jdbc:mariadb://localhost/bank</property>
         <property name = "hibernate.connection.username">root</property>
         <property name = "hibernate.connection.password"></property>
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
 
         <mapping class="Employee"/>
         <mapping class="Customer"/>
@@ -18,7 +18,7 @@
         <mapping class="Account"/>
         <mapping class="Branch"/>
         <mapping class="CreditCard"/>
-        <mapping class="Transaction"/>
+        <mapping class="MoneyTransaction"/>
 
     </session-factory>
 </hibernate-configuration>

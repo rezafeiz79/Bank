@@ -444,7 +444,7 @@ public class View {
         creditCard.setSecondPassword(secondPassword);
     }
 
-    public static Transaction showTransactionCreationWizard(Customer customer, Session session) {
+    public static MoneyTransaction showTransactionCreationWizard(Customer customer, Session session) {
         CreditCard senderCard;
         CreditCard receiverCard;
         long amount;
@@ -455,7 +455,7 @@ public class View {
         System.out.print("Enter The Amount: ");
         amount = Long.parseLong(scanner.nextLine());
         if (customer.getId() == senderCard.getAccount().getCustomer().getId()) {
-            return new Transaction(null, senderCard, receiverCard, amount, java.time.LocalDate.now().toString());
+            return new MoneyTransaction(null, senderCard, receiverCard, amount, java.time.LocalDate.now().toString());
         }
         return null;
     }
@@ -502,11 +502,11 @@ public class View {
         return (Employee)session.get(Employee.class, id);
     }
 
-    public static Transaction showTransactionSelectionMenu(Session session) {
+    public static MoneyTransaction showTransactionSelectionMenu(Session session) {
         int id;
         System.out.print("Enter Transaction ID: ");
         id = Integer.parseInt(scanner.nextLine());
-        return (Transaction)session.get(Transaction.class, id);
+        return (MoneyTransaction)session.get(MoneyTransaction.class, id);
     }
 
     public static Person showSignInWizard(Set<Person> persons) {
