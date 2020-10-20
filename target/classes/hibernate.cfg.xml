@@ -18,7 +18,7 @@
         <mapping class="Account"/>
         <mapping class="Branch"/>
         <mapping class="CreditCard"/>
-        <mapping class="Transaction"/>
+        <mapping class="MoneyTransaction"/>
 
     </session-factory>
 </hibernate-configuration>

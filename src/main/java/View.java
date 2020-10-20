@@ -394,7 +394,9 @@ public class View {
             }
         }
         if (isUnique) {
-            Account account = new Account(null, customer, accountNumber, null, 0l, true, branch);
+            System.out.print("Enter Initial Balance: ");
+            long balance = Long.parseLong(scanner.nextLine());
+            Account account = new Account(null, customer, accountNumber, null, balance, true, branch);
             if (customer.getAccounts() != null) {
                 customer.getAccounts().add(account);
             } else {
@@ -418,6 +420,9 @@ public class View {
         while (!isUnique) {
             cvv2 = random.nextInt(1000) + 1000;
             cardNumber = random.nextInt(100000) + 100000;
+            if (creditCards.isEmpty()) {
+                isUnique = true;
+            }
             for (CreditCard creditCard : creditCards) {
                 if (!(cvv2 == creditCard.getCvv2() || cardNumber == creditCard.getCardNumber())) {
                     isUnique = true;
